@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -14,13 +14,40 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+// ============================================
+// 🎬 UPDATE YOUR MEDIA PATHS HERE
+// ============================================
+const HERO_MEDIA = {
+  mobile: {
+    type: 'video',
+    src: '/video/hero_mob.mp4',
+  },
+  desktop: {
+    type: 'image',
+    src: '/video/mugpc.jpg',   // Change this to your desktop image
+  },
+};
+// ============================================
+
 const Mugs = () => {
   const [sortBy, setSortBy] = useState("featured");
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const navigate = useNavigate();
   const videoRef = useRef<HTMLVideoElement>(null);
   const productsRef = useRef<HTMLDivElement>(null);
+
+  // Detect screen size
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const scrollToProducts = () => {
     productsRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -44,38 +71,41 @@ const Mugs = () => {
     }
   };
 
+  // Get current media based on screen size
+  const currentMedia = isMobile ? HERO_MEDIA.mobile : HERO_MEDIA.desktop;
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
 
-      {/* Full Screen Video Hero Section */}
+      {/* Full Screen Hero Section */}
       <section className="relative h-screen w-full overflow-hidden">
-        {/* Video Background */}
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          {/* Replace this with your video URL */}
-          <source
-            src="https://cdn.pixabay.com/video/2020/07/30/45952-446617161_large.mp4"
-            type="video/mp4"
-          />
-          {/* Fallback image */}
+        
+        {/* Conditional Background - Video for Mobile, Image for Desktop */}
+        {currentMedia.type === 'video' ? (
+          <video
+            ref={videoRef}
+            key="mobile-video"
+            autoPlay
+            loop
+            muted={isMuted}
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src={currentMedia.src} type="video/mp4" />
+          </video>
+        ) : (
           <img
-            src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=1920&q=80"
+            src={currentMedia.src}
             alt="Mugs Background"
-            className="w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover"
           />
-        </video>
+        )}
 
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
 
-        {/* Red Accent Overlay (optional - for brand consistency) */}
+        {/* Red Accent Overlay */}
         <div className="absolute inset-0 bg-[#EF4343]/10" />
 
         {/* Hero Content */}
@@ -164,21 +194,23 @@ const Mugs = () => {
             </div>
           </motion.div>
 
-          {/* Video Controls */}
-          <div className="absolute bottom-10 right-10 flex gap-3">
-            <button
-              onClick={togglePlay}
-              className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all border border-white/30"
-            >
-              {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
-            </button>
-            <button
-              onClick={toggleMute}
-              className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all border border-white/30"
-            >
-              {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
-            </button>
-          </div>
+          {/* Video Controls - Only show on mobile when video is playing */}
+          {isMobile && currentMedia.type === 'video' && (
+            <div className="absolute bottom-10 right-10 flex gap-3">
+              <button
+                onClick={togglePlay}
+                className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all border border-white/30"
+              >
+                {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
+              </button>
+              <button
+                onClick={toggleMute}
+                className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all border border-white/30"
+              >
+                {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -260,12 +292,12 @@ const Mugs = () => {
                     alt={product.name}
                     className={`w-full h-full object-cover transition-all duration-500 ${
                       product.hoverImage 
-                        ? "group-hover:opacity-0" // If hover image exists, hide this one
-                        : "group-hover:scale-110" // If NO hover image, zoom this one
+                        ? "group-hover:opacity-0"
+                        : "group-hover:scale-110"
                     }`}
                   />
                   
-                  {/* HOVER IMAGE (Only renders if hoverImage exists) */}
+                  {/* HOVER IMAGE */}
                   {product.hoverImage && (
                     <img
                       src={product.hoverImage}
