@@ -48,7 +48,7 @@ export const mugProducts = [
     name: "Black Coffee Cup, 11oz",
     image: "/mug-images/3.jpg",
     hoverImage: "/mug-images/3_h.jpg",
-    images: ["/mug-images/3.jpg", "/mug-images/3_h.jpg", "/mug-images/5.jpg"],
+    images: ["/mug-images/3_h.jpg","/mug-images/3.jpg"],
     price: 1.5,
     sizes: ["11oz"],
     material: "Premium ceramic",
@@ -129,27 +129,7 @@ export const mugProducts = [
     colors: ["White"],
     care: "Dishwasher and microwave safe."
   },
-  {
-    id: 9,
-    name: "Color-Changing Mug, 11oz",
-    image: "/mug-images/9.jpg",
-    hoverImage: "/mug-images/9_h.jpg",
-    images: ["/mug-images/9.jpg", "/mug-images/9_h.jpg"],
-    price: 1.5,
-    sizes: ["11oz"],
-    material: "Thermochromic ceramic",
-    description: "Interactive color-changing mug that transforms when hot beverages are added. A fun and engaging experience with every use.",
-    features: [
-      "Color-changing technology",
-      "Reveals design with heat",
-      "11oz capacity",
-      "Hand wash recommended",
-      "Unique conversation starter",
-      "Perfect gift idea"
-    ],
-    colors: ["Color-changing"],
-    care: "Hand wash recommended. Avoid extreme temperatures."
-  },
+  
   {
     id: 10,
     name: "Mason Jar",
