@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import News from "@/components/News"
 import { motion } from "framer-motion";
 import { fadeInUp } from "../animation/variants";
 import { mugProducts } from "../data/mugProducts";
@@ -102,57 +103,38 @@ const Mugs = () => {
           />
         )}
 
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
-
-        {/* Red Accent Overlay */}
-        <div className="absolute inset-0 bg-[#EF4343]/10" />
+        {/* --- LIGHTER OVERLAYS FOR BETTER IMAGE VISIBILITY --- */}
+        
+        {/* 1. Base Dark Layer: Much lighter now (20% opacity instead of 50%) */}
+        <div className="absolute inset-0 bg-black/20" />
+        
+        {/* 2. Gradient Layer: Transparent middle to let image shine through */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60" />
 
         {/* Hero Content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="max-w-5xl"
+            className="max-w-6xl z-10"
           >
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="inline-block mb-6"
-            >
-              <span className="bg-white/20 backdrop-blur-sm text-white px-6 py-2 rounded-full text-sm font-medium border border-white/30">
-                Premium Collection
-              </span>
-            </motion.div>
-
             {/* Main Heading */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-6 tracking-tight"
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 mx-auto leading-tight tracking-tight drop-shadow-2xl"
             >
-              Mugs
+              Discover our premium collection of customizable mugs
             </motion.h1>
 
             {/* Subheading */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-xl md:text-2xl text-white/90 mb-4 max-w-3xl mx-auto leading-relaxed"
-            >
-              Discover our premium collection of customizable mugs
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-lg text-white/70 mb-10 max-w-2xl mx-auto"
+              className="text-xl md:text-3xl text-white font-bold mb-12 max-w-4xl mx-auto drop-shadow-xl leading-relaxed"
             >
               From classic ceramic to modern insulated designs, find the perfect mug for corporate gifts, events, and personal celebrations.
             </motion.p>
@@ -162,18 +144,18 @@ const Mugs = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              className="flex flex-col sm:flex-row gap-5 justify-center"
             >
               <button
                 onClick={scrollToProducts}
-                className="bg-[#EF4343] hover:bg-[#EF4343]/90 text-white px-10 py-4 rounded-full text-lg font-semibold transition-all hover:scale-105 shadow-lg shadow-[#EF4343]/30"
+                className="bg-[#EF4343] hover:bg-[#d03a3a] text-white px-10 py-5 rounded-full text-xl font-bold transition-all hover:scale-105 shadow-[0_10px_20px_rgba(239,67,67,0.3)] border border-transparent"
               >
                 Explore Collection
               </button>
               
               <a
                 href="tel:+919819416689"
-                className="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white px-10 py-4 rounded-full text-lg font-semibold transition-all border border-white/30"
+                className="bg-black/30 hover:bg-black/50 backdrop-blur-md text-white px-10 py-5 rounded-full text-xl font-bold transition-all border-2 border-white/70 hover:border-white shadow-lg"
               >
                 Contact Us
               </a>
@@ -185,27 +167,27 @@ const Mugs = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5 }}
-            className="absolute bottom-10 cursor-pointer"
+            className="absolute bottom-10 cursor-pointer z-10"
             onClick={scrollToProducts}
           >
-            <div className="flex flex-col items-center text-white/80 hover:text-white transition-colors">
-              <span className="text-sm mb-2 tracking-wider uppercase">Scroll to explore</span>
-              <ChevronDown className="w-6 h-6 animate-bounce" />
+            <div className="flex flex-col items-center text-white hover:text-gray-200 transition-colors drop-shadow-lg">
+              <span className="text-sm mb-3 tracking-[0.2em] uppercase font-bold">Scroll to explore</span>
+              <ChevronDown className="w-8 h-8 animate-bounce stroke-[3px]" />
             </div>
           </motion.div>
 
           {/* Video Controls - Only show on mobile when video is playing */}
           {isMobile && currentMedia.type === 'video' && (
-            <div className="absolute bottom-10 right-10 flex gap-3">
+            <div className="absolute bottom-10 right-10 flex gap-3 z-20">
               <button
                 onClick={togglePlay}
-                className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all border border-white/30"
+                className="w-12 h-12 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/20 shadow-lg"
               >
                 {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
               </button>
               <button
                 onClick={toggleMute}
-                className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all border border-white/30"
+                className="w-12 h-12 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/20 shadow-lg"
               >
                 {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
               </button>
@@ -383,6 +365,7 @@ const Mugs = () => {
         </div>
       </section>
 
+      <News />
       <Footer />
     </div>
   );

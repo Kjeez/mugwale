@@ -57,11 +57,9 @@ const Clients = () => {
     { name: "Pulp Strategy", logo: "/icons/55.png" },
     { name: "Percept", logo: "/icons/56.png" },
     { name: "Matrix", logo: "/icons/57.png" },
-    { name: "Metalnox", logo: "/icons/58.png" },
-    { name: "Unknown 60", logo: "/icons/60.png" },
     { name: "SAE India", logo: "/icons/61.png" },
     { name: "Autonom India 2021", logo: "/icons/62.png" },
-    { name: "Unknown 63", logo: "/icons/63.png" },
+    { name: "ISO 9001", logo: "/icons/63.png" },
     { name: "Boost", logo: "/icons/64.png" },
     { name: "NASSCOM", logo: "/icons/65.png" },
     { name: "DRDO", logo: "/icons/66.png" },
@@ -70,7 +68,7 @@ const Clients = () => {
     { name: "Binary", logo: "/icons/69.png" },
   ];
 
-  // Split into 4 rows (17 logos each, last row has remaining)
+  // Split into 4 rows
   const row1 = clients.slice(0, 17);
   const row2 = clients.slice(17, 34);
   const row3 = clients.slice(34, 51);

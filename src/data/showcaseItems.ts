@@ -1,53 +1,38 @@
 // data/showcaseItems.ts
 const showcaseItems = [
-  {
-    id: 1,
-    type: "video",
-    title: "PowerBook Product Showcase",
-    description: "Discover our latest PowerBook technology and features in this exclusive product demonstration.",
-    media: "/showcase/powerbook.mp4",
-    thumbnail: "/showcase/1.jpeg", // Use image 1 as video thumbnail
-    tags: ["Product", "Technology", "Demo"],
-  },
+  
   {
     id: 2,
     type: "image",
-    title: "Production Facility Tour",
-    description: "A glimpse into our state-of-the-art manufacturing facility showcasing our commitment to quality.",
-    media: "/showcase/1.jpeg",
-    tags: ["Facility", "Manufacturing", "Quality"],
+    title: "Mug Wale Exhibition Booth",
+    description: "Our impressive exhibition booth showcasing the complete range of sublimation coffee mugs at the trade show.",
+    media: "/img/exhibition.jpeg",
+    tags: ["Exhibition", "Mug Wale", "Trade Show"],
   },
-  {
-    id: 3,
-    type: "image",
-    title: "Industry Exhibition 2025",
-    description: "Our team presenting innovative solutions at the leading industry trade show.",
-    media: "/showcase/event1.jpeg",
-    tags: ["Exhibition", "Innovation", "Networking"],
-  },
+  
   {
     id: 4,
     type: "image",
-    title: "Excellence Award Ceremony",
-    description: "Proud moment as our team receives recognition for outstanding performance and quality standards.",
-    media: "/showcase/event2.jpeg",
-    tags: ["Awards", "Recognition", "Achievement"],
+    title: "Packaging & Logistics",
+    description: "Behind the scenes look at our production process - from quality inspection to shipping and logistics.",
+    media: "/img/exhibition_3.jpeg",
+    tags: ["Production", "Logistics", "Manufacturing"],
   },
   {
     id: 5,
     type: "image",
-    title: "Industry Leadership Meet",
-    description: "Connecting with industry leaders and forging partnerships for future growth.",
-    media: "/showcase/event3.jpeg",
-    tags: ["Leadership", "Partnership", "Growth"],
+    title: "Team at Trade Exhibition",
+    description: "The Kamlesh Group Mug Wale team engaging with visitors and showcasing our sublimation coffee mugs collection.",
+    media: "/img/exhibition_4.jpeg",
+    tags: ["Team", "Exhibition", "Networking"],
   },
   {
     id: 6,
     type: "image",
-    title: "Business Excellence Awards 2025",
-    description: "Celebrating success at the prestigious Business Excellence Awards ceremony.",
-    media: "/showcase/event4.jpeg",
-    tags: ["Awards", "Excellence", "Celebration"],
+    title: "Client Engagement",
+    description: "Building relationships and demonstrating our premium mug designs to potential clients at the exhibition.",
+    media: "/img/exhibition_5.jpeg",
+    tags: ["Clients", "Exhibition", "Business"],
   },
 ];
 

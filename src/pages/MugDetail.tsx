@@ -1,6 +1,4 @@
-// src/pages/MugDetail.tsx
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -12,19 +10,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Droplets, 
-  Microwave, 
-  Palette, 
-  Sun,
-  Shield,
-  Sparkles,
-  ThermometerSun,
-  Coffee,
-  Heart,
-  Grip
+  Phone, Mail, MapPin, Droplets, Microwave, Palette, Sun,
+  Shield, Sparkles, ThermometerSun, Coffee, Heart, Grip
 } from "lucide-react";
 
 // Feature icon mapping
@@ -62,6 +49,9 @@ const MugDetail = () => {
   const { toast } = useToast();
   const [selectedSize, setSelectedSize] = useState("");
   const [quantity, setQuantity] = useState(1);
+  
+  // New State for Image Gallery
+  const [activeImage, setActiveImage] = useState("");
 
   const [formData, setFormData] = useState({
     name: "",
@@ -70,7 +60,16 @@ const MugDetail = () => {
     message: "",
   });
 
+  // Find Product
+  // Note: We use type assertion or optional chaining to handle the potential missing 'outOfStockSizes' on the type if strictly typed
   const product = mugProducts.find((p) => p.id === parseInt(id || "0"));
+
+  // Set initial active image when product loads
+  useEffect(() => {
+    if (product) {
+      setActiveImage(product.image);
+    }
+  }, [product]);
 
   if (!product) {
     return (
@@ -82,6 +81,9 @@ const MugDetail = () => {
       </div>
     );
   }
+
+  // Fallback: If data is missing images array, create one from single fields
+  const productImages = product.images || [product.image, product.hoverImage].filter(Boolean);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -125,19 +127,44 @@ const MugDetail = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-16 mb-20">
-            {/* Product Image */}
+            {/* IMAGE GALLERY SECTION */}
             <motion.div
               variants={fadeInUp}
               initial="hidden"
               animate="visible"
+              className="space-y-4"
             >
-              <div className="relative overflow-hidden bg-white rounded-3xl aspect-square shadow-lg">
+              {/* Main Large Image */}
+              <div className="relative overflow-hidden bg-white rounded-3xl aspect-square shadow-lg border border-[#D4D4C4]">
                 <img
-                  src={product.image}
+                  src={activeImage}
                   alt={product.name}
                   className="w-full h-full object-cover"
                 />
               </div>
+
+              {/* Thumbnails Row */}
+              {productImages.length > 1 && (
+                <div className="flex gap-4 overflow-x-auto pb-2">
+                  {productImages.map((img, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setActiveImage(img)}
+                      className={`relative flex-shrink-0 w-24 h-24 rounded-xl overflow-hidden border-2 transition-all ${
+                        activeImage === img
+                          ? "border-primary ring-2 ring-primary/20"
+                          : "border-transparent hover:border-[#D4D4C4]"
+                      }`}
+                    >
+                      <img
+                        src={img}
+                        alt={`${product.name} view ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
             </motion.div>
 
             {/* Product Info */}
@@ -170,23 +197,44 @@ const MugDetail = () => {
                 <p className="text-[#5C5C3D]">{product.material}</p>
               </div>
 
+              {/* Sizes Section with Out of Stock Logic */}
               <div>
                 <h3 className="font-semibold text-lg text-[#3D3D29] mb-3">Available Sizes</h3>
-                <div className="flex gap-3">
-                  {product.sizes.map((size) => (
-                    <button
-                      key={size}
-                      onClick={() => setSelectedSize(size)}
-                      className={`px-6 py-3 rounded-lg border-2 font-medium transition-all ${
-                        selectedSize === size
-                          ? "border-primary bg-primary text-white"
-                          : "border-[#D4D4C4] bg-white hover:border-primary text-[#3D3D29]"
-                      }`}
-                    >
-                      {size}
-                    </button>
-                  ))}
+                <div className="flex gap-3 flex-wrap">
+                  {product.sizes.map((size) => {
+                    // Check availability
+                    // @ts-ignore - Handle outOfStockSizes existing on some items but not all
+                    const isOutOfStock = product.outOfStockSizes?.includes(size);
+
+                    return (
+                      <button
+                        key={size}
+                        disabled={isOutOfStock}
+                        onClick={() => setSelectedSize(size)}
+                        className={`px-6 py-3 rounded-lg border-2 font-medium transition-all relative ${
+                          isOutOfStock
+                            ? "border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed opacity-70"
+                            : selectedSize === size
+                            ? "border-primary bg-primary text-white"
+                            : "border-[#D4D4C4] bg-white hover:border-primary text-[#3D3D29]"
+                        }`}
+                      >
+                        {size}
+                        {/* Strikethrough for out of stock */}
+                        {isOutOfStock && (
+                          <span className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div className="w-[80%] h-[2px] bg-gray-400 rotate-12 absolute" />
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
                 </div>
+                 {/* Helper text for stock */}
+                 {/* @ts-ignore */}
+                 {product.outOfStockSizes && product.outOfStockSizes.length > 0 && (
+                   <p className="text-sm text-red-500 mt-2 font-medium">* Some sizes are currently out of stock</p>
+                )}
               </div>
 
               <div>

@@ -43,7 +43,7 @@ function Hero({ setNavbarTransparent }) {
         rootMargin: '-80px 0px 0px 0px'
       }
     );
-console.log('Hero rendering, isMobile:', isMobile);
+    console.log('Hero rendering, isMobile:', isMobile);
     const currentRef = heroRef.current;
     if (currentRef) observer.observe(currentRef);
     return () => {
@@ -61,7 +61,7 @@ console.log('Hero rendering, isMobile:', isMobile);
   return (
     <div
       ref={heroRef}
-      className="relative w-full h-screen overflow-hidden"
+      className="relative w-full h-screen overflow-hidden bg-black"
     >
       {/* Single Video - Source changes based on screen size */}
       <video
@@ -71,7 +71,7 @@ console.log('Hero rendering, isMobile:', isMobile);
         loop
         muted={isMuted}
         playsInline
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover opacity-90" // Slight opacity to blend with black bg
       >
         <source 
           src={isMobile ? HERO_VIDEOS.mobile : HERO_VIDEOS.desktop} 
@@ -79,37 +79,54 @@ console.log('Hero rendering, isMobile:', isMobile);
         />
       </video>
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/40 pointer-events-none" />
+      {/* UPDATED: Darker Gradient Overlay for better text visibility */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70 pointer-events-none" />
 
       {/* Vignette Effect */}
       <div 
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.3) 100%)',
+          background: 'radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%)',
         }}
       />
 
       {/* Content Container */}
       <motion.div
         className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        {/* Your content goes here */}
+        {/* Added Text Shadow (drop-shadow-lg) for better readability */}
+        <div className="max-w-4xl space-y-6 drop-shadow-lg">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight">
+            Kamlesh Group of Companies
+          </h1>
+          <p className="text-lg md:text-2xl text-white/90 font-light max-w-2xl mx-auto leading-relaxed">
+            Innovating across industries, delivering excellence in every venture.
+          </p>
+          
+          <div className="pt-8">
+            <button 
+              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+              className="px-8 py-3 bg-[#EF4343] hover:bg-[#d03a3a] text-white rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg shadow-red-600/30"
+            >
+              Discover More
+            </button>
+          </div>
+        </div>
       </motion.div>
 
       {/* Mute/Unmute Button */}
       <button
         onClick={toggleMute}
-        className="absolute bottom-24 md:bottom-10 right-10 z-20 bg-black/40 p-3 rounded-full hover:bg-black/70 transition-colors"
+        className="absolute bottom-24 md:bottom-10 right-10 z-20 bg-black/40 backdrop-blur-sm p-3 rounded-full hover:bg-black/60 transition-all border border-white/10"
         aria-label={isMuted ? 'Unmute video' : 'Mute video'}
       >
         {isMuted ? (
-          <VolumeX size={24} className="text-[#F05656]" />
+          <VolumeX size={24} className="text-white/90" />
         ) : (
-          <Volume2 size={24} className="text-[#F05656]" />
+          <Volume2 size={24} className="text-white/90" />
         )}
       </button>
     </div>

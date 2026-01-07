@@ -132,16 +132,7 @@ const Showcase = () => {
   return (
     <section id="showcase" className="py-20 bg-white">
       <div className="w-full mx-auto px-6">
-        <div className="flex justify-center text-center mx-auto mb-12 px-4">
-          <div className="w-full max-w-4xl">
-            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-black">
-              Our Showcase
-            </h2>
-            <p className="text-lg md:text-2xl text-gray-600 leading-relaxed">
-              Explore our journey through events, achievements, and innovations.
-            </p>
-          </div>
-        </div>
+        
 
         <div
           className="relative w-full"
