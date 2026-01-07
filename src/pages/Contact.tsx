@@ -247,20 +247,20 @@ const Contact = () => {
               <div>
                 <h3 className="text-xl font-semibold mb-4 text-black">Contact Number</h3>
                 <a
-                  href="callto:9819416689"
+                  href="callto:9811700286"
                   className="text-primary hover:text-primary/80 transition-colors text-lg"
                 >
-                  +91 9819416689
+                  +91 9811700286
                 </a>
               </div>
 
               <div>
                 <h3 className="text-xl font-semibold mb-4 text-black">General enquiries</h3>
                 <a
-                  href="mailto:Team@newsmakermediagroup.com"
+                  href="mailto:contact@kamleshgroup.in"
                   className="text-primary hover:text-primary/80 transition-colors text-lg"
                 >
-                  Team@newsmakermediagroup.com
+                  contact@kamleshgroup.in
                 </a>
               </div>
             </div>

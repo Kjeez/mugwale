@@ -24,14 +24,15 @@ const Header = () => {
       ]
     },
     {
-      title: "Kamlesh Enterprises",
+      title: "Kamlesh Garments", // UPDATED: Renamed from Enterprises
       link: "/products/t-shirts",
       isExternal: false,
       subServices: [
         { title: "Polyester T-Shirts", tagline: "180 GSM", link: "/products/t-shirts" },
         { title: "Collar Matty T-Shirt", tagline: "Polo neck", link: "/products/t-shirts" },
         { title: "Blank T-Shirt", tagline: "Multi-style", link: "/products/t-shirts" },
-        { title: "Cotton Feel T-Shirt", tagline: "160 GSM", link: "/products/t-shirts" }
+        { title: "Cotton Feel T-Shirt", tagline: "160 GSM", link: "/products/t-shirts" },
+        { title: "Brands We Offer", tagline: "Our partners", link: "/products/t-shirts#brands" } // ADDED
       ]
     },
     {
@@ -53,7 +54,8 @@ const Header = () => {
         { title: "Powerbooks", tagline: "Tech enabled", link: "/corporate-gifting/notebooks" },
         { title: "Diaries", tagline: "Premium leather", link: "/corporate-gifting/notebooks" },
         { title: "Corporate Notebooks", tagline: "Custom sizes", link: "/corporate-gifting/notebooks" },
-        { title: "Office Essentials", tagline: "Desk ready", link: "/corporate-gifting/desk-accessories" }
+        { title: "Office Essentials", tagline: "Desk ready", link: "/corporate-gifting/desk-accessories" },
+        { title: "Brands We Offer", tagline: "Trusted names", link: "/corporate-gifting#brands" } // ADDED
       ]
     },
     {
@@ -82,7 +84,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50); // Changed to 50 for quicker response
+      setIsScrolled(window.scrollY > 50); 
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -123,10 +125,29 @@ const Header = () => {
     setIsMobileMenuOpen(false);
     setIsMobileServicesOpen(false);
     
+    // Check if it's a hash link on the same page
+    if (link.includes("#")) {
+      const [path, hash] = link.split("#");
+      if (location.pathname === path) {
+        // We are already on the page, just scroll
+        const el = document.getElementById(hash);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+    }
+
     if (link.startsWith("http")) {
       window.open(link, "_blank");
     } else {
       navigate(link);
+      // Allow navigation to complete before scrolling (simple timeout handling usually needed for hash links in React)
+      if (link.includes("#")) {
+        setTimeout(() => {
+          const id = link.split("#")[1];
+          const el = document.getElementById(id);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
     }
   };
 
@@ -135,7 +156,7 @@ const Header = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
           ? "bg-white shadow-lg border-b border-gray-200 py-3" 
-          : "bg-gradient-to-b from-black/60 to-transparent py-5" // UPDATED: Added Gradient & padding change
+          : "bg-gradient-to-b from-black/60 to-transparent py-5"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
@@ -144,7 +165,7 @@ const Header = () => {
             src="/img/MUGWALE.png"
             alt="Kamlesh Group Logo"
             className={`h-14 w-auto transition-all duration-300 ${
-              !isScrolled ? "brightness-0 invert drop-shadow-md" : "" // UPDATED: Turns logo white when transparent
+              !isScrolled ? "brightness-0 invert drop-shadow-md" : ""
             }`}
           />
         </Link>
@@ -156,7 +177,7 @@ const Header = () => {
             className={`cursor-pointer text-lg font-medium transition-colors duration-300 ${
               isScrolled 
                 ? "text-black hover:text-primary" 
-                : "text-white hover:text-primary drop-shadow-md" // UPDATED: White text with shadow
+                : "text-white hover:text-primary drop-shadow-md"
             }`}
           >
             About us
@@ -172,7 +193,7 @@ const Header = () => {
               className={`cursor-pointer text-lg font-medium transition-colors duration-300 flex items-center gap-1 ${
                 isScrolled 
                   ? "text-black hover:text-primary" 
-                  : "text-white hover:text-primary drop-shadow-md" // UPDATED
+                  : "text-white hover:text-primary drop-shadow-md"
               }`}
             >
               Services
@@ -183,42 +204,42 @@ const Header = () => {
             {isMegaMenuOpen && (
               <div 
                 className="absolute top-full left-1/2 transform -translate-x-1/2 pt-4"
-                style={{ width: '800px' }}
+                style={{ width: '850px' }}
               >
-                {/* Added an arrow indicator pointing up to the menu */}
+                {/* Arrow indicator */}
                 <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-b-[8px] border-b-white"></div>
                 
                 <div className="bg-white shadow-2xl border border-gray-100 rounded-xl overflow-hidden">
-                  {/* 3x2 Grid - Compact */}
+                  {/* 3x2 Grid */}
                   <div className="grid grid-cols-3">
                     {services.map((service, index) => (
                       <div 
                         key={index} 
-                        className={`p-4 hover:bg-gray-50 transition-colors border-r border-gray-100 last:border-r-0 ${index >= 3 ? 'border-t border-gray-100' : ''}`}
+                        className={`p-5 hover:bg-gray-50 transition-colors border-r border-gray-100 last:border-r-0 ${index >= 3 ? 'border-t border-gray-100' : ''}`}
                       >
                         {/* Service Title */}
                         <div 
-                          className="flex items-center gap-2 cursor-pointer group mb-2"
+                          className="flex items-center gap-2 cursor-pointer group mb-3"
                           onClick={() => handleServiceClick(service)}
                         >
-                          <h3 className="font-bold text-sm text-gray-900 group-hover:text-primary transition-colors">
+                          <h3 className="font-bold text-base text-gray-900 group-hover:text-primary transition-colors">
                             {service.title}
                           </h3>
                           {service.isExternal && (
-                            <ExternalLink className="w-3 h-3 text-gray-400 group-hover:text-primary" />
+                            <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-primary" />
                           )}
                         </div>
                         
-                        {/* Sub Services - Compact List */}
-                        <div className="space-y-1">
+                        {/* Sub Services List */}
+                        <div className="space-y-2">
                           {service.subServices.map((sub, subIndex) => (
                             <div
                               key={subIndex}
-                              className="flex items-center gap-1.5 cursor-pointer group/item py-0.5"
+                              className="flex items-center gap-2 cursor-pointer group/item py-0.5"
                               onClick={() => handleSubServiceClick(sub.link)}
                             >
-                              <ChevronRight className="w-3 h-3 text-gray-300 group-hover/item:text-primary flex-shrink-0 transition-colors" />
-                              <span className="text-xs text-gray-500 group-hover/item:text-primary transition-colors font-medium">
+                              <ChevronRight className="w-4 h-4 text-gray-300 group-hover/item:text-primary flex-shrink-0 transition-colors" />
+                              <span className="text-sm text-gray-600 group-hover/item:text-primary transition-colors font-medium">
                                 {sub.title}
                               </span>
                             </div>
@@ -229,14 +250,14 @@ const Header = () => {
                   </div>
                   
                   {/* Footer */}
-                  <div className="bg-gray-50 px-5 py-3 border-t border-gray-100 flex items-center justify-between">
+                  <div className="bg-gray-50 px-6 py-4 border-t border-gray-100 flex items-center justify-between">
                     <a 
                       onClick={() => { setIsMegaMenuOpen(false); navigate("/corporate-gifting"); }}
-                      className="text-xs font-semibold text-primary hover:underline cursor-pointer flex items-center gap-1"
+                      className="text-sm font-semibold text-primary hover:underline cursor-pointer flex items-center gap-1"
                     >
-                      View All Products <ChevronRight className="w-3 h-3" />
+                      View All Products <ChevronRight className="w-4 h-4" />
                     </a>
-                    <span className="text-[10px] text-gray-400 font-medium tracking-wide">TRUSTED BY 100+ BRANDS</span>
+                    <span className="text-xs text-gray-500 font-medium tracking-wide">TRUSTED BY 100+ BRANDS</span>
                   </div>
                 </div>
               </div>
@@ -248,7 +269,7 @@ const Header = () => {
             className={`cursor-pointer text-lg font-medium transition-colors duration-300 ${
               isScrolled 
                 ? "text-black hover:text-primary" 
-                : "text-white hover:text-primary drop-shadow-md" // UPDATED
+                : "text-white hover:text-primary drop-shadow-md"
             }`}
           >
             Client Showcase
@@ -258,7 +279,7 @@ const Header = () => {
             className={`cursor-pointer text-lg font-medium transition-colors duration-300 ${
               isScrolled 
                 ? "text-black hover:text-primary" 
-                : "text-white hover:text-primary drop-shadow-md" // UPDATED
+                : "text-white hover:text-primary drop-shadow-md"
             }`}
           >
             Blog
@@ -271,7 +292,7 @@ const Header = () => {
             className={`hidden sm:flex font-medium px-6 rounded-full transition-all ${
               isScrolled 
                ? "bg-primary hover:bg-primary/90 text-white"
-               : "bg-white text-primary hover:bg-gray-100" // UPDATED: White button when transparent header
+               : "bg-white text-primary hover:bg-gray-100"
             }`}
             onClick={() => { setIsMegaMenuOpen(false); navigate("/contact"); }}
           >
@@ -285,7 +306,7 @@ const Header = () => {
             }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
@@ -296,7 +317,7 @@ const Header = () => {
           <nav className="container mx-auto px-6 py-6 space-y-2">
             <a
               onClick={() => handleNavClick("about")}
-              className="block py-3 text-base font-medium text-gray-800 hover:text-primary transition-colors cursor-pointer border-b border-gray-100"
+              className="block py-3 text-lg font-medium text-gray-800 hover:text-primary transition-colors cursor-pointer border-b border-gray-100"
             >
               About us
             </a>
@@ -305,7 +326,7 @@ const Header = () => {
             <div className="border-b border-gray-100">
               <div
                 onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                className="flex items-center justify-between py-3 text-base font-medium text-gray-800 hover:text-primary transition-colors cursor-pointer"
+                className="flex items-center justify-between py-3 text-lg font-medium text-gray-800 hover:text-primary transition-colors cursor-pointer"
               >
                 <span>Services</span>
                 <ChevronDown
@@ -316,28 +337,29 @@ const Header = () => {
               </div>
 
               {isMobileServicesOpen && (
-                <div className="pb-3 space-y-4 mt-1">
+                <div className="pb-4 space-y-4 mt-2">
                   {services.map((service, index) => (
                     <div key={index} className="pl-4">
                       <div 
                         className="flex items-center gap-2 cursor-pointer py-1"
                         onClick={() => handleServiceClick(service)}
                       >
-                        <h4 className="font-semibold text-sm text-gray-900 hover:text-primary transition-colors">
+                        <h4 className="font-semibold text-base text-gray-900 hover:text-primary transition-colors">
                           {service.title}
                         </h4>
                         {service.isExternal && (
-                          <ExternalLink className="w-3 h-3 text-gray-400" />
+                          <ExternalLink className="w-4 h-4 text-gray-400" />
                         )}
                       </div>
-                      <div className="pl-3 space-y-2 mt-2 border-l-2 border-gray-100">
-                        {service.subServices.slice(0, 3).map((sub, subIndex) => (
+                      <div className="pl-4 space-y-2 mt-2 border-l-2 border-gray-100">
+                        {/* UPDATED: Removed slice to show all items including brands on mobile */}
+                        {service.subServices.map((sub, subIndex) => (
                           <div
                             key={subIndex}
                             onClick={() => handleSubServiceClick(sub.link)}
-                            className="flex items-center gap-2 pl-3 py-0.5 cursor-pointer text-gray-600 hover:text-primary transition-colors"
+                            className="flex items-center gap-2 pl-2 py-1 cursor-pointer text-gray-600 hover:text-primary transition-colors"
                           >
-                            <span className="text-xs font-medium">{sub.title}</span>
+                            <span className="text-sm font-medium">{sub.title}</span>
                           </div>
                         ))}
                       </div>
@@ -349,19 +371,19 @@ const Header = () => {
 
             <a
               onClick={() => { setIsMobileMenuOpen(false); navigate("/news"); }}
-              className="block py-3 text-base font-medium text-gray-800 hover:text-primary transition-colors cursor-pointer border-b border-gray-100"
+              className="block py-3 text-lg font-medium text-gray-800 hover:text-primary transition-colors cursor-pointer border-b border-gray-100"
             >
               Client Showcase
             </a>
             <a
               onClick={() => { setIsMobileMenuOpen(false); navigate("/blogs"); }}
-              className="block py-3 text-base font-medium text-gray-800 hover:text-primary transition-colors cursor-pointer border-b border-gray-100"
+              className="block py-3 text-lg font-medium text-gray-800 hover:text-primary transition-colors cursor-pointer border-b border-gray-100"
             >
               Blog
             </a>
             <Button
               variant="default"
-              className="w-full bg-primary hover:bg-primary/90 text-white font-medium rounded-lg mt-6 py-6"
+              className="w-full bg-primary hover:bg-primary/90 text-white font-medium rounded-lg mt-8 py-6 text-lg"
               onClick={() => { setIsMobileMenuOpen(false); navigate("/contact"); }}
             >
               Contact us
