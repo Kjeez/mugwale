@@ -198,9 +198,9 @@ export const mugProducts = [
   {
     id: 15,
     name: "Black Mug (15oz)",
-    image: "/mug-images/15.jpg",
-    hoverImage: "/mug-images/15.jpg",
-    images: ["/mug-images/15.jpg"],
+    image: "/mug-images/15_1.jpeg",
+    hoverImage: "/mug-images/15_2.jpg",
+    images: ["/mug-images/15_1.jpeg", "/mug-images/15_2.jpg", "/mug-images/15_3.jpeg"],
     price: 1.75,
     sizes: ["15oz"],
     material: "Ceramic",
