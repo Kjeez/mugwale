@@ -14,77 +14,77 @@ const Header = () => {
   const services = [
     {
       title: "Mug Wale",
-      link: "https://mugwale.vercel.app/mugs",
-      isExternal: true,
+      link: "/mugs",
+      isExternal: false,
       subServices: [
-        { title: "White 11 oz Mugs", tagline: "Classic ceramic", link: "https://mugwale.vercel.app/mugs" },
-        { title: "Color Handle Mugs", tagline: "Dual tone", link: "https://mugwale.vercel.app/mugs" },
-        { title: "Magic Mugs", tagline: "Heat reveal", link: "https://mugwale.vercel.app/mugs" },
-        { title: "Patch Mugs", tagline: "Modern style", link: "https://mugwale.vercel.app/mugs" }
+        { title: "White 11 oz Mugs", tagline: "Classic ceramic", link: "/mugs/1" },
+        { title: "Color Handle Mugs", tagline: "Dual tone", link: "/mugs/2" },
+        { title: "Magic Mugs", tagline: "Heat reveal", link: "/mugs/7" },
+        { title: "Patch Mugs", tagline: "Modern style", link: "/mugs/15" }
       ]
     },
     {
-      title: "Kamlesh Garments", // UPDATED: Renamed from Enterprises
-      link: "/products/t-shirts",
-      isExternal: false,
+      title: "Kamlesh Garments",
+      link: "https://kamlesh-group.vercel.app/products/t-shirts",
+      isExternal: true,
       subServices: [
-        { title: "Polyester T-Shirts", tagline: "180 GSM", link: "/products/t-shirts" },
-        { title: "Collar Matty T-Shirt", tagline: "Polo neck", link: "/products/t-shirts" },
-        { title: "Blank T-Shirt", tagline: "Multi-style", link: "/products/t-shirts" },
-        { title: "Cotton Feel T-Shirt", tagline: "160 GSM", link: "/products/t-shirts" },
-        { title: "Brands We Offer", tagline: "Our partners", link: "/products/t-shirts#brands" } // ADDED
+        { title: "Polyester T-Shirts", tagline: "180 GSM", link: "https://kamlesh-group.vercel.app/products/t-shirts?sub=sublimation-polyester" },
+        { title: "Collar Matty T-Shirt", tagline: "Polo neck", link: "https://kamlesh-group.vercel.app/products/t-shirts?sub=collar-matty" },
+        { title: "Blank T-Shirt", tagline: "Multi-style", link: "https://kamlesh-group.vercel.app/products/t-shirts?sub=sublimation-blank" },
+        { title: "Cotton Feel T-Shirt", tagline: "160 GSM", link: "https://kamlesh-group.vercel.app/products/t-shirts?sub=cotton-feel" },
+        { title: "Brands We Offer", tagline: "Our partners", link: "https://kamlesh-group.vercel.app/#brands" }
       ]
     },
     {
       title: "Powerbook",
-      link: "/corporate-gifting",
-      isExternal: false,
+      link: "https://kamlesh-group.vercel.app/corporate-gifting/notebooks",
+      isExternal: true,
       subServices: [
-        { title: "Premium Trophies", tagline: "Corporate awards", link: "/corporate-gifting/awards" },
-        { title: "Branded Keychains", tagline: "Brand recall", link: "/corporate-gifting/keychains" },
-        { title: "Luxury Pens", tagline: "Executive style", link: "/corporate-gifting/pens" },
-        { title: "Professional Bags", tagline: "On the move", link: "/corporate-gifting/backpacks" }
+        { title: "Wiro Notebooks", tagline: "Spiral bound", link: "https://kamlesh-group.vercel.app/corporate-gifting/notebooks" },
+        { title: "Hardcover Notebooks", tagline: "Executive quality", link: "https://kamlesh-group.vercel.app/corporate-gifting/notebooks" },
+        { title: "Kraft Notebooks", tagline: "Eco-friendly", link: "https://kamlesh-group.vercel.app/corporate-gifting/notebooks" },
+        { title: "Executive Notebooks", tagline: "Premium leather", link: "https://kamlesh-group.vercel.app/corporate-gifting/notebooks" }
       ]
     },
     {
       title: "Corporate Gifting",
-      link: "/corporate-gifting",
-      isExternal: false,
+      link: "https://kamlesh-group.vercel.app/corporate-gifting",
+      isExternal: true,
       subServices: [
-        { title: "Powerbooks", tagline: "Tech enabled", link: "/corporate-gifting/notebooks" },
-        { title: "Diaries", tagline: "Premium leather", link: "/corporate-gifting/notebooks" },
-        { title: "Corporate Notebooks", tagline: "Custom sizes", link: "/corporate-gifting/notebooks" },
-        { title: "Office Essentials", tagline: "Desk ready", link: "/corporate-gifting/desk-accessories" },
-        { title: "Brands We Offer", tagline: "Trusted names", link: "/corporate-gifting#brands" } // ADDED
+        { title: "Trophies", tagline: "Tech enabled", link: "https://kamlesh-group.vercel.app/corporate-gifting/awards" },
+        { title: "Mobile Stands", tagline: "Premium leather", link: "https://kamlesh-group.vercel.app/corporate-gifting/mobile-stands" },
+        { title: "Corporate Notebooks", tagline: "Custom sizes", link: "https://kamlesh-group.vercel.app/corporate-gifting/notebooks" },
+        { title: "Office Essentials", tagline: "Desk ready", link: "https://kamlesh-group.vercel.app/corporate-gifting/desk-accessories" },
+        { title: "Brands We Offer", tagline: "Trusted names", link: "https://kamlesh-group.vercel.app/#brands" }
       ]
     },
     {
       title: "Allure Space",
-      link: "/allure-space",
-      isExternal: false,
+      link: "https://kamlesh-group.vercel.app/allure-space",
+      isExternal: true,
       subServices: [
-        { title: "Architectural Design", tagline: "Visionary", link: "/allure-space" },
-        { title: "Interior Architecture", tagline: "Sophisticated", link: "/allure-space" },
-        { title: "Commercial Spaces", tagline: "Functional", link: "/allure-space" },
-        { title: "Turnkey Projects", tagline: "Seamless", link: "/allure-space" }
+        { title: "Architectural Design", tagline: "Visionary", link: "https://kamlesh-group.vercel.app/allure-space" },
+        { title: "Interior Architecture", tagline: "Sophisticated", link: "https://kamlesh-group.vercel.app/allure-space" },
+        { title: "Commercial Spaces", tagline: "Functional", link: "https://kamlesh-group.vercel.app/allure-space" },
+        { title: "Turnkey Projects", tagline: "Seamless", link: "https://kamlesh-group.vercel.app/allure-space" }
       ]
     },
     {
       title: "NARS Surgicals",
-      link: "/nars",
-      isExternal: false,
+      link: "https://kamlesh-group.vercel.app/nars",
+      isExternal: true,
       subServices: [
-        { title: "Surgical Gowns", tagline: "Max protection", link: "/nars" },
-        { title: "Laminated Fabrics", tagline: "Viral barrier", link: "/nars" },
-        { title: "Biodegradable PPE", tagline: "Eco-conscious", link: "/nars" },
-        { title: "Antimicrobial Tech", tagline: "Germ defense", link: "/nars" }
+        { title: "Surgical Gowns", tagline: "Max protection", link: "https://kamlesh-group.vercel.app/nars#surgical-gowns" },
+        { title: "Laminated Fabrics", tagline: "Viral barrier", link: "https://kamlesh-group.vercel.app/nars#laminated-fabrics" },
+        { title: "Biodegradable PPE", tagline: "Eco-conscious", link: "https://kamlesh-group.vercel.app/nars#biodegradable-ppe" },
+        { title: "Antimicrobial Tech", tagline: "Germ defense", link: "https://kamlesh-group.vercel.app/nars#antimicrobial-tech" }
       ]
     }
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50); 
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -112,7 +112,7 @@ const Header = () => {
     setIsMegaMenuOpen(false);
     setIsMobileMenuOpen(false);
     setIsMobileServicesOpen(false);
-    
+
     if (service.isExternal) {
       window.open(service.link, "_blank");
     } else {
@@ -124,7 +124,7 @@ const Header = () => {
     setIsMegaMenuOpen(false);
     setIsMobileMenuOpen(false);
     setIsMobileServicesOpen(false);
-    
+
     // Check if it's a hash link on the same page
     if (link.includes("#")) {
       const [path, hash] = link.split("#");
@@ -153,20 +153,18 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? "bg-white shadow-lg border-b border-gray-200 py-3" 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+          ? "bg-white shadow-lg border-b border-gray-200 py-3"
           : "bg-gradient-to-b from-black/60 to-transparent py-5"
-      }`}
+        }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link to="/" onClick={() => setIsMegaMenuOpen(false)}>
           <img
             src="/img/MUGWALE.png"
-            alt="Kamlesh Group Logo"
-            className={`h-14 w-auto transition-all duration-300 ${
-              !isScrolled ? "brightness-0 invert drop-shadow-md" : ""
-            }`}
+            alt="Mug Wale Logo"
+            className={`h-14 w-auto transition-all duration-300 ${!isScrolled ? "brightness-0 invert drop-shadow-md" : ""
+              }`}
           />
         </Link>
 
@@ -174,15 +172,14 @@ const Header = () => {
         <nav className="hidden md:flex items-center space-x-8">
           <a
             onClick={() => handleNavClick("about")}
-            className={`cursor-pointer text-lg font-medium transition-colors duration-300 ${
-              isScrolled 
-                ? "text-black hover:text-primary" 
+            className={`cursor-pointer text-lg font-medium transition-colors duration-300 ${isScrolled
+                ? "text-black hover:text-primary"
                 : "text-white hover:text-primary drop-shadow-md"
-            }`}
+              }`}
           >
             About us
           </a>
-          
+
           {/* Services with Mega Menu */}
           <div
             className="relative"
@@ -190,11 +187,10 @@ const Header = () => {
             onMouseLeave={() => setIsMegaMenuOpen(false)}
           >
             <a
-              className={`cursor-pointer text-lg font-medium transition-colors duration-300 flex items-center gap-1 ${
-                isScrolled 
-                  ? "text-black hover:text-primary" 
+              className={`cursor-pointer text-lg font-medium transition-colors duration-300 flex items-center gap-1 ${isScrolled
+                  ? "text-black hover:text-primary"
                   : "text-white hover:text-primary drop-shadow-md"
-              }`}
+                }`}
             >
               Services
               <ChevronDown className={`w-4 h-4 transition-transform ${isMegaMenuOpen ? 'rotate-180' : ''}`} />
@@ -202,23 +198,23 @@ const Header = () => {
 
             {/* Compact Mega Menu */}
             {isMegaMenuOpen && (
-              <div 
+              <div
                 className="absolute top-full left-1/2 transform -translate-x-1/2 pt-4"
                 style={{ width: '850px' }}
               >
                 {/* Arrow indicator */}
                 <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-b-[8px] border-b-white"></div>
-                
+
                 <div className="bg-white shadow-2xl border border-gray-100 rounded-xl overflow-hidden">
                   {/* 3x2 Grid */}
                   <div className="grid grid-cols-3">
                     {services.map((service, index) => (
-                      <div 
-                        key={index} 
+                      <div
+                        key={index}
                         className={`p-5 hover:bg-gray-50 transition-colors border-r border-gray-100 last:border-r-0 ${index >= 3 ? 'border-t border-gray-100' : ''}`}
                       >
                         {/* Service Title */}
-                        <div 
+                        <div
                           className="flex items-center gap-2 cursor-pointer group mb-3"
                           onClick={() => handleServiceClick(service)}
                         >
@@ -229,7 +225,7 @@ const Header = () => {
                             <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-primary" />
                           )}
                         </div>
-                        
+
                         {/* Sub Services List */}
                         <div className="space-y-2">
                           {service.subServices.map((sub, subIndex) => (
@@ -248,14 +244,14 @@ const Header = () => {
                       </div>
                     ))}
                   </div>
-                  
+
                   {/* Footer */}
                   <div className="bg-gray-50 px-6 py-4 border-t border-gray-100 flex items-center justify-between">
-                    <a 
-                      onClick={() => { setIsMegaMenuOpen(false); navigate("/corporate-gifting"); }}
+                    <a
+                      onClick={() => { setIsMegaMenuOpen(false); navigate("/mugs"); }}
                       className="text-sm font-semibold text-primary hover:underline cursor-pointer flex items-center gap-1"
                     >
-                      View All Products <ChevronRight className="w-4 h-4" />
+                      View All Mugs <ChevronRight className="w-4 h-4" />
                     </a>
                     <span className="text-xs text-gray-500 font-medium tracking-wide">TRUSTED BY 100+ BRANDS</span>
                   </div>
@@ -266,21 +262,19 @@ const Header = () => {
 
           <a
             onClick={() => { setIsMegaMenuOpen(false); navigate("/news"); }}
-            className={`cursor-pointer text-lg font-medium transition-colors duration-300 ${
-              isScrolled 
-                ? "text-black hover:text-primary" 
+            className={`cursor-pointer text-lg font-medium transition-colors duration-300 ${isScrolled
+                ? "text-black hover:text-primary"
                 : "text-white hover:text-primary drop-shadow-md"
-            }`}
+              }`}
           >
             Client Showcase
           </a>
           <a
             onClick={() => { setIsMegaMenuOpen(false); navigate("/blogs"); }}
-            className={`cursor-pointer text-lg font-medium transition-colors duration-300 ${
-              isScrolled 
-                ? "text-black hover:text-primary" 
+            className={`cursor-pointer text-lg font-medium transition-colors duration-300 ${isScrolled
+                ? "text-black hover:text-primary"
                 : "text-white hover:text-primary drop-shadow-md"
-            }`}
+              }`}
           >
             Blog
           </a>
@@ -289,11 +283,10 @@ const Header = () => {
         <div className="flex items-center gap-4">
           <Button
             variant="default"
-            className={`hidden sm:flex font-medium px-6 rounded-full transition-all ${
-              isScrolled 
-               ? "bg-primary hover:bg-primary/90 text-white"
-               : "bg-white text-primary hover:bg-gray-100"
-            }`}
+            className={`hidden sm:flex font-medium px-6 rounded-full transition-all ${isScrolled
+                ? "bg-primary hover:bg-primary/90 text-white"
+                : "bg-white text-primary hover:bg-gray-100"
+              }`}
             onClick={() => { setIsMegaMenuOpen(false); navigate("/contact"); }}
           >
             Contact us
@@ -301,9 +294,8 @@ const Header = () => {
 
           {/* Mobile menu toggle */}
           <button
-            className={`md:hidden p-2 transition-colors duration-300 ${
-              isScrolled ? "text-black" : "text-white drop-shadow-md"
-            }`}
+            className={`md:hidden p-2 transition-colors duration-300 ${isScrolled ? "text-black" : "text-white drop-shadow-md"
+              }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -330,9 +322,8 @@ const Header = () => {
               >
                 <span>Services</span>
                 <ChevronDown
-                  className={`w-5 h-5 transition-transform ${
-                    isMobileServicesOpen ? "rotate-180" : ""
-                  }`}
+                  className={`w-5 h-5 transition-transform ${isMobileServicesOpen ? "rotate-180" : ""
+                    }`}
                 />
               </div>
 
@@ -340,7 +331,7 @@ const Header = () => {
                 <div className="pb-4 space-y-4 mt-2">
                   {services.map((service, index) => (
                     <div key={index} className="pl-4">
-                      <div 
+                      <div
                         className="flex items-center gap-2 cursor-pointer py-1"
                         onClick={() => handleServiceClick(service)}
                       >
@@ -352,7 +343,6 @@ const Header = () => {
                         )}
                       </div>
                       <div className="pl-4 space-y-2 mt-2 border-l-2 border-gray-100">
-                        {/* UPDATED: Removed slice to show all items including brands on mobile */}
                         {service.subServices.map((sub, subIndex) => (
                           <div
                             key={subIndex}
