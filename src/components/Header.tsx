@@ -32,7 +32,7 @@ const Header = () => {
         { title: "Collar Matty T-Shirt", tagline: "Polo neck", link: "https://kamlesh-group.vercel.app/products/t-shirts?sub=collar-matty" },
         { title: "Blank T-Shirt", tagline: "Multi-style", link: "https://kamlesh-group.vercel.app/products/t-shirts?sub=sublimation-blank" },
         { title: "Cotton Feel T-Shirt", tagline: "160 GSM", link: "https://kamlesh-group.vercel.app/products/t-shirts?sub=cotton-feel" },
-        { title: "Brands We Offer", tagline: "Our partners", link: "https://kamlesh-group.vercel.app/#brands" }
+
       ]
     },
     {
@@ -55,7 +55,7 @@ const Header = () => {
         { title: "Mobile Stands", tagline: "Premium leather", link: "https://kamlesh-group.vercel.app/corporate-gifting/mobile-stands" },
         { title: "Corporate Notebooks", tagline: "Custom sizes", link: "https://kamlesh-group.vercel.app/corporate-gifting/notebooks" },
         { title: "Office Essentials", tagline: "Desk ready", link: "https://kamlesh-group.vercel.app/corporate-gifting/desk-accessories" },
-        { title: "Brands We Offer", tagline: "Trusted names", link: "https://kamlesh-group.vercel.app/#brands" }
+
       ]
     },
     {
@@ -78,6 +78,15 @@ const Header = () => {
         { title: "Laminated Fabrics", tagline: "Viral barrier", link: "https://kamlesh-group.vercel.app/nars#laminated-fabrics" },
         { title: "Biodegradable PPE", tagline: "Eco-conscious", link: "https://kamlesh-group.vercel.app/nars#biodegradable-ppe" },
         { title: "Antimicrobial Tech", tagline: "Germ defense", link: "https://kamlesh-group.vercel.app/nars#antimicrobial-tech" }
+      ]
+    }
+    ,
+    {
+      title: "Brands we Offer",
+      link: "https://kamlesh-group.vercel.app/#brands",
+      isExternal: true,
+      subServices: [
+        { title: "Brands We Offer", tagline: "Trusted names", link: "https://kamlesh-group.vercel.app/#brands" }
       ]
     }
   ];
@@ -154,8 +163,8 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? "bg-white shadow-lg border-b border-gray-200 py-3"
-          : "bg-gradient-to-b from-black/60 to-transparent py-5"
+        ? "bg-white shadow-lg border-b border-gray-200 py-3"
+        : "bg-gradient-to-b from-black/60 to-transparent py-5"
         }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
@@ -173,8 +182,8 @@ const Header = () => {
           <a
             onClick={() => handleNavClick("about")}
             className={`cursor-pointer text-lg font-medium transition-colors duration-300 ${isScrolled
-                ? "text-black hover:text-primary"
-                : "text-white hover:text-primary drop-shadow-md"
+              ? "text-black hover:text-primary"
+              : "text-white hover:text-primary drop-shadow-md"
               }`}
           >
             About us
@@ -188,8 +197,8 @@ const Header = () => {
           >
             <a
               className={`cursor-pointer text-lg font-medium transition-colors duration-300 flex items-center gap-1 ${isScrolled
-                  ? "text-black hover:text-primary"
-                  : "text-white hover:text-primary drop-shadow-md"
+                ? "text-black hover:text-primary"
+                : "text-white hover:text-primary drop-shadow-md"
                 }`}
             >
               Services
@@ -263,8 +272,8 @@ const Header = () => {
           <a
             onClick={() => { setIsMegaMenuOpen(false); navigate("/news"); }}
             className={`cursor-pointer text-lg font-medium transition-colors duration-300 ${isScrolled
-                ? "text-black hover:text-primary"
-                : "text-white hover:text-primary drop-shadow-md"
+              ? "text-black hover:text-primary"
+              : "text-white hover:text-primary drop-shadow-md"
               }`}
           >
             Client Showcase
@@ -272,8 +281,8 @@ const Header = () => {
           <a
             onClick={() => { setIsMegaMenuOpen(false); navigate("/blogs"); }}
             className={`cursor-pointer text-lg font-medium transition-colors duration-300 ${isScrolled
-                ? "text-black hover:text-primary"
-                : "text-white hover:text-primary drop-shadow-md"
+              ? "text-black hover:text-primary"
+              : "text-white hover:text-primary drop-shadow-md"
               }`}
           >
             Blog
@@ -284,8 +293,8 @@ const Header = () => {
           <Button
             variant="default"
             className={`hidden sm:flex font-medium px-6 rounded-full transition-all ${isScrolled
-                ? "bg-primary hover:bg-primary/90 text-white"
-                : "bg-white text-primary hover:bg-gray-100"
+              ? "bg-primary hover:bg-primary/90 text-white"
+              : "bg-white text-primary hover:bg-gray-100"
               }`}
             onClick={() => { setIsMegaMenuOpen(false); navigate("/contact"); }}
           >
