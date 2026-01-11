@@ -6,7 +6,7 @@ export const mugProducts = [
     hoverImage: "/mug-images/1_h.jpg",
     images: ["/mug-images/1.jpg", "/mug-images/1_h.jpg"],
     // ADDED: Out of stock logic
-    outOfStockSizes: ["11oz", "20oz"], 
+    outOfStockSizes: ["15oz", "20oz"],
     price: 1,
     sizes: ["11oz", "15oz", "20oz"],
     material: "100% glossy ceramic",
@@ -27,7 +27,7 @@ export const mugProducts = [
     name: "Two-Tone Coffee Mug, 11oz",
     image: "/mug-images/2.jpg",
     hoverImage: "/mug-images/2_h.jpg",
-    images: ["/mug-images/2.jpg", "/mug-images/2_h.jpg", "/mug-images/4.jpg", "/mug-images/4_h.jpg", "/mug-images/12.jpg", "/mug-images/12_h.jpg"],
+    images: ["/mug-images/2.jpg", "/mug-images/2_h.jpg", "/mug-images/4.jpg", "/mug-images/4_h.jpg", "/mug-images/12_h.jpg"],
     price: 1.3,
     sizes: ["11oz"],
     material: "Premium ceramic",
@@ -48,7 +48,7 @@ export const mugProducts = [
     name: "Black Coffee Cup, 11oz",
     image: "/mug-images/3.jpg",
     hoverImage: "/mug-images/3_h.jpg",
-    images: ["/mug-images/3_h.jpg","/mug-images/3.jpg"],
+    images: ["/mug-images/3_h.jpg", "/mug-images/3.jpg"],
     price: 1.5,
     sizes: ["11oz"],
     material: "Premium ceramic",
@@ -64,8 +64,8 @@ export const mugProducts = [
     colors: ["Black"],
     care: "Hand wash recommended to maintain finish."
   },
-  
-  
+
+
   {
     id: 6,
     name: "Heart-Shaped Mug",
@@ -129,7 +129,7 @@ export const mugProducts = [
     colors: ["White"],
     care: "Dishwasher and microwave safe."
   },
-  
+
   {
     id: 10,
     name: "Mason Jar",
@@ -172,8 +172,8 @@ export const mugProducts = [
     colors: ["Frosted"],
     care: "Dishwasher safe. Handle carefully."
   },
-  
-  
+
+
   {
     id: 14,
     name: "Ceramic Mug, (15oz)",
@@ -181,7 +181,7 @@ export const mugProducts = [
     hoverImage: undefined,
     images: ["/mug-images/14.jpg"],
     price: 2,
-    sizes: [ "15oz"],
+    sizes: ["15oz"],
     material: "Ceramic",
     description: "Classic ceramic mug in two convenient sizes. A reliable choice for everyday coffee and tea enjoyment.",
     features: [
@@ -200,7 +200,7 @@ export const mugProducts = [
     name: "Black Mug (15oz)",
     image: "/mug-images/15_1.jpeg",
     hoverImage: "/mug-images/15_2.jpg",
-    images: ["/mug-images/15_1.jpeg", "/mug-images/15_2.jpg", "/mug-images/15_3.jpeg"],
+    images: ["/mug-images/15_1.jpeg", "/mug-images/15_2.jpg",],
     price: 1.75,
     sizes: ["15oz"],
     material: "Ceramic",
@@ -216,7 +216,7 @@ export const mugProducts = [
     colors: ["Black"],
     care: "Dishwasher and microwave safe."
   },
-  
+
   {
     id: 18,
     name: "Frosted Glass Beer Mug",
